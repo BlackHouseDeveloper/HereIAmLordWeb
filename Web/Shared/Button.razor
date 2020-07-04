@@ -1,0 +1,56 @@
+﻿@using BlazorAnimation
+
+<div>
+    <BlazorAnimation.Animation Effect="@gameAnimation" Speed="Speed.Fast" Delay="Delay.None">
+        <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/cross_button.png" @onclick="@InvokeParentDislikedCard" />
+        <span disabled class="corona-button-time align-middle">@timerText</span>
+        <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/heart_button_test.png" @onclick="@InvokeParentLikedCard" />
+    </BlazorAnimation.Animation>
+</div>
+
+@code {
+    
+    private AnimationEffect introAnimation = Effect.FadeIn;
+    private AnimationEffect gameAnimation = Effect.FadeIn;
+    private AnimationEffect outroAnimation = Effect.FadeIn;
+
+    [Parameter] public bool taskRunning { get; set; }
+    [Parameter] public string timerText { get; set; }
+    [Parameter] public Action ParentReplay { get; set; }
+    [Parameter] public Action ParentPlay { get; set; }
+    [Parameter] public Action ParentLikedCard { get; set; }
+    [Parameter] public Action ParentDislikedCard { get; set; }
+    [Parameter] public Action ParentToggleTaskActive { get; set; }
+
+    [Parameter] public string StateOfGame { get; set; }
+
+    private bool toggledOnce = false;
+
+    private void InvokeParentReplay()
+    {
+        ParentReplay?.Invoke();
+    }
+    private void InvokeParentPlay()
+    {
+        introAnimation = Effect.FadeOut;
+        StateHasChanged();
+        ParentPlay?.Invoke();
+    }
+    private void InvokeParentLikedCard() => ParentLikedCard?.Invoke();
+    private void InvokeParentDislikedCard() => ParentDislikedCard?.Invoke();
+    private void InvokeParentToggleTaskActive()
+    {
+        if (!toggledOnce)
+        {
+            ParentToggleTaskActive?.Invoke();
+        }
+        toggledOnce = true;
+    }
+
+    private void test()
+    {
+        taskRunning = false;
+        StateHasChanged();
+    }
+
+}

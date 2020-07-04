@@ -1,0 +1,22 @@
+﻿
+@if (card != null)
+{
+    <Animation Effect="@cardanimation" Enabled="@active" Speed="Speed.Fast" Delay="Delay.None">
+        <div class="justify-content-center align-items-center d-flex">
+            <img id="card-image" src="@card.Image" alt="@card.Name">
+        </div>
+    </Animation>
+
+    <Animation Effect="@textanimation" Enabled="@active" Speed="Speed.Fast" Delay="Delay.None">
+        <div class="carousel-caption corona-card-overlay">
+            <h1 class="corona-card-name">@card.Name</h1>
+        </div>
+    </Animation>
+}
+
+@code {
+    [Parameter] public TCard card { get; set; }
+    [Parameter] public AnimationEffect cardanimation { get; set; }
+    [Parameter] public AnimationEffect textanimation { get; set; }
+    [Parameter] public bool active { get; set; }
+}

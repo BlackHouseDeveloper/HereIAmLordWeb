@@ -136,6 +136,198 @@ app {
     top: 0.5rem;
 }
 
+#card-bg {
+    background: rgb(248,207,240);
+    background: linear-gradient(180deg, rgba(248,207,240,1) 0%, rgba(232,220,233,1) 100%);
+    -webkit-border-bottom-left-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    -moz-border-radius-bottomleft: 50px;
+    -moz-border-radius-bottomright: 50px;
+    border: none;
+    margin: auto;
+    height: 70vh;
+}
+
+#card-image {
+    width: 35%;
+    height: 35%;
+}
+
+:focus {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+#like-buttons {
+    margin: auto;
+}
+
+    /*#like-buttons > input:not(:first-of-type) {
+    margin-left: 15px;
+}
+
+#like-buttons > input:first-of-type {
+    margin-right: 15px;
+}*/
+
+    #like-buttons > input {
+    }
+
+#corona-button {
+    width: 10vh;
+    object-fit: contain;
+    filter: drop-shadow(1px 2px 3px black);
+}
+
+#corona-button-time {
+    width: 7vh;
+    object-fit: contain;
+    filter: drop-shadow(1px 2px 3px black);
+}
+
+#outer {
+    display: flex;
+    flex-flow: column;
+}
+
+#overlay {
+    width: 100%;
+    height: 20%;
+    bottom: 30vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    -webkit-border-bottom-left-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    -moz-border-radius-bottomleft: 50px;
+    -moz-border-radius-bottomright: 50px;
+}
+
+/* NEW START */
+
+.corona-tinder {
+    background: #ededed;
+    display: flex;
+    flex-flow: column;
+}
+
+.corona-card {
+    background: rgb(248,207,240);
+    background: linear-gradient(180deg, rgba(248,207,240,1) 0%, rgba(232,220,233,1) 100%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: none;
+    margin: auto;
+    height: 70vh;
+    width: 35%;
+    filter: drop-shadow(0px 1px 1px black);
+}
+
+.corona-top {
+    height: 6vh;
+}
+
+.corona-intro > p {
+    font-family: "Trebuchet MS", Helvetica, sans-serif
+}
+
+.corona-button {
+    width: 10vh;
+    object-fit: contain;
+    filter: drop-shadow(1px 1px 0.5px gray);
+    margin-right: 10px;
+    margin-left: 10px;
+    background: white;
+    border-radius: 50%;
+    transition: background .2s ease-in;
+}
+
+    .corona-button:active {
+        background: #f0f0f0;
+        animation: hvr-ripple-out;
+    }
+
+.corona-button-time {
+    width: 9vh;
+    height: 9vh;
+    object-fit: contain;
+    filter: drop-shadow(1px 1px 0.5px gray);
+    margin-right: 10px;
+    margin-left: 10px;
+    background: white;
+    border-radius: 100%;
+    transition: background .2s ease-in;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial;
+    font-size: 33px;
+    font-weight: bold;
+    color: blue;
+}
+
+.corona-card-overlay {
+    left: 8%;
+    text-align: left;
+    padding-bottom: 2;
+}
+
+.corona-card-name {
+    filter: drop-shadow(1px 0px 1px gray);
+}
+
+/* Ripple Effect */
+
+@-webkit-keyframes hvr-ripple-out {
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+    }
+}
+
+@keyframes hvr-ripple-out {
+    100% {
+        top: -12px;
+        right: -12px;
+        bottom: -12px;
+        left: -12px;
+        opacity: 0;
+    }
+}
+
+
+
+.hvr-ripple-out {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+}
+
+    .hvr-ripple-out:before {
+        content: '';
+        position: absolute;
+        border: #e1e1e1 solid 6px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+    }
+
+.corona-card:homver:before, .corona-card:focus:before, .corona-card:active:before {
+    -webkit-animation-name: hvr-ripple-out;
+    animation-name: hvr-ripple-out;
+}
+
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
         display: none;

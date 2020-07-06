@@ -1,12 +1,11 @@
 ﻿@using BlazorAnimation
 
-<div>
-    <BlazorAnimation.Animation Effect="@gameAnimation" Speed="Speed.Fast" Delay="Delay.None">
-        <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/cross_button.png" @onclick="@InvokeParentDislikedCard" />
-        <span disabled class="corona-button-time align-middle">@timerText</span>
-        <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/heart_button_test.png" @onclick="@InvokeParentLikedCard" />
-    </BlazorAnimation.Animation>
-</div>
+    <div class="corona-bottom d-flex flex-grow-1 justify-content-center align-items-center">
+        <BlazorAnimation.Animation Effect="@gameAnimation" Speed="Speed.Fast" Delay="Delay.None">
+            <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/cross_button.png" @onclick="@InvokeParentDislikedCard" />
+            <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/heart_button_test.png" @onclick="@InvokeParentLikedCard" />
+        </BlazorAnimation.Animation>
+    </div>
 
 @code {
     

@@ -6,6 +6,13 @@
         color: orange;
         padding: 10px;
     }
+
+    .left {
+        position: absolute;
+        height: inherit;
+        width: auto;
+        padding-left: 10px;
+    }
 </style>
 
 <div class="sidebar ">
@@ -13,7 +20,8 @@
 </div>
 
 <div class="main">
-    <div class="top-row px-4 auth">
+    <div class="top-row px-4 auth navbar-dark">
+        <img class="left" src="./images/ui/CadeChapelLogo.jpg">
         <LoginDisplay />
         <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
     </div>

@@ -2,118 +2,118 @@
 @using Web.Shared
 @inject TcardManip Manip1
 @inject NavigationManager NavigationManager
+    
 
-<h1>READY FOR SERVICE?</h1>
 
 <div class="here-tinder vh-100">
-    <div class="corona-top">
+    <div class="corona-top"  >
+        <h1 class=" " style="text-align:center">WORSHIP, GROW, CONNECT & SERVE</h1>
     </div>
-    <div class="corona-card d-flex justify-content-center align-items-center">
+    <div class="corona-card d-flex justify-content-center align-items-center" style="margin-bottom: 5px; margin-top: 5px;">
         <Card cardanimation="@cardAnimation" textanimation="@textAnimation" active="cardAnimationActive" card="@cards1[currentCard]" />
-        </div>
-        <Button taskRunning="@taskrunning" ParentToggleTaskActive="toggleTaskRunning" ParentLikedCard="nextTCard" ParentDislikedCard="nextTCard" />
-        </div>
-        <SurveyPrompt Title="How is Blazor working for you?" />
+    </div>
+    <Button taskRunning="@taskrunning" ParentToggleTaskActive="toggleTaskRunning" ParentLikedCard="nextTCard" ParentDislikedCard="nextTCard" />
+</div>
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code{
+
+
+    private int taskDelayTime = 250;
 
 
 
-        @code{
+    public AnimationEffect cardAnimation = Effect.ZoomIn;
+    public AnimationEffect textAnimation = Effect.FadeIn;
+
+    private string imagePlaceholder = "./images/cards/placeholder.png";
+
+    public bool taskrunning = true;
+
+    public void toggleTaskRunning()
+    {
+        taskrunning = !taskrunning;
+        Console.WriteLine(taskrunning.ToString());
+    }
 
 
-            private int taskDelayTime = 250;
+    private bool cardAnimationActive = true;
+
+    private string buttonfade = "animate__animated animate__fadeIn";
+
+    public async void play()
+    {
+        Random rnd = new Random();
+        currentCard = rnd.Next(cards1.Length);
 
 
+        toggleTaskRunning();
+        StateHasChanged();
+        Console.WriteLine("Playing");
+        await Task.Delay(taskDelayTime);
 
-            public AnimationEffect cardAnimation = Effect.ZoomIn;
-            public AnimationEffect textAnimation = Effect.FadeIn;
+    }
 
-            private string imagePlaceholder = "./images/cards/placeholder.png";
 
-            public bool taskrunning = true;
+    #region Cards
+    private TCard[] cards1;
+    private int currentCard;
 
-            public void toggleTaskRunning()
+    protected override async Task OnInitializedAsync()
+    {
+
+        cards1 = await Manip1.GetInfoAsync();
+        play();
+
+        foreach (var card in cards1)
+        {
+            card.Voted = false;
+            card.Liked = false;
+
+
+            //check if file exists on server later
+            if (card.Image == null)
             {
-                taskrunning = !taskrunning;
-                Console.WriteLine(taskrunning.ToString());
+                card.Image = imagePlaceholder;
             }
-
-
-            private bool cardAnimationActive = true;
-
-            private string buttonfade = "animate__animated animate__fadeIn";
-
-            public async void play()
-            {
-                Random rnd = new Random();
-                currentCard = rnd.Next(cards1.Length);
-
-
-                toggleTaskRunning();
-                StateHasChanged();
-                Console.WriteLine("Playing");
-                await Task.Delay(taskDelayTime);
-
-            }
-
-
-            #region Cards
-            private TCard[] cards1;
-            private int currentCard;
-
-            protected override async Task OnInitializedAsync()
-            {
-
-                cards1 = await Manip1.GetInfoAsync();
-                play();
-
-                foreach (var card in cards1)
-                {
-                    card.Voted = false;
-                    card.Liked = false;
-
-
-                    //check if file exists on server later
-                    if (card.Image == null)
-                    {
-                        card.Image = imagePlaceholder;
-                    }
-                }
-            }
-
-            public async void nextTCard()
-            {
-                toggleTaskRunning();
-                cardAnimation = Effect.ZoomOut;
-                textAnimation = Effect.FadeOut;
-                cardAnimationActive = true;
-
-                bool isLiked = true;
-
-                cards1[currentCard].Voted = true;
-                cards1[currentCard].Liked = isLiked;
-
-                StateHasChanged();
-                await Task.Delay(taskDelayTime);
-                toggleTaskRunning();
-                cardAnimationActive = false;
-                StateHasChanged();
-                cardAnimation = Effect.ZoomIn;
-                textAnimation = Effect.FadeIn;
-                cardAnimationActive = true;
-
-                Random rnd = new Random();
-                int nextcard = rnd.Next(cards1.Length);
-
-                while (nextcard == currentCard)
-                {
-                    nextcard = rnd.Next(cards1.Length);
-                }
-
-                currentCard = nextcard;
-
-                StateHasChanged();
-            }
-            #endregion
-
-
         }
+    }
+
+    public async void nextTCard()
+    {
+        toggleTaskRunning();
+        cardAnimation = Effect.ZoomOut;
+        textAnimation = Effect.FadeOut;
+        cardAnimationActive = true;
+
+        bool isLiked = true;
+
+        cards1[currentCard].Voted = true;
+        cards1[currentCard].Liked = isLiked;
+
+        StateHasChanged();
+        await Task.Delay(taskDelayTime);
+        toggleTaskRunning();
+        cardAnimationActive = false;
+        StateHasChanged();
+        cardAnimation = Effect.ZoomIn;
+        textAnimation = Effect.FadeIn;
+        cardAnimationActive = true;
+
+        Random rnd = new Random();
+        int nextcard = rnd.Next(cards1.Length);
+
+        while (nextcard == currentCard)
+        {
+            nextcard = rnd.Next(cards1.Length);
+        }
+
+        currentCard = nextcard;
+
+        StateHasChanged();
+    }
+    #endregion
+
+
+}

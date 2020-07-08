@@ -1,8 +1,8 @@
 ﻿@using BlazorAnimation
 
     <div class="corona-bottom d-flex flex-grow-1 justify-content-center align-items-center">
-        <BlazorAnimation.Animation Effect="@gameAnimation" Speed="Speed.Fast" Delay="Delay.None">
-            <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/cross_button.png" @onclick="@InvokeParentDislikedCard" />
+        <BlazorAnimation.Animation Effect="@gameAnimation" Speed="Speed.Fast" Delay="Delay.None" >
+            <input disabled="@taskRunning" class="corona-button align-middle " type="image" src="./images/ui/cross_button.png" @onclick="@InvokeParentDislikedCard" />
             <input disabled="@taskRunning" class="corona-button align-middle" type="image" src="./images/ui/heart_button_test.png" @onclick="@InvokeParentLikedCard" />
         </BlazorAnimation.Animation>
     </div>

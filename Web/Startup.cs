@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Web.Areas.Identity;
 using Web.Data;
 using Web.Shared;
+using Radzen;
 
 namespace Web
 {
@@ -42,6 +43,9 @@ namespace Web
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<TcardManip>();
+            services.AddScoped<DialogService>();
+            services.AddScoped<NotificationService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

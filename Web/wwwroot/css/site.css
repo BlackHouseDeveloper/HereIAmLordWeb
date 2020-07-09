@@ -8,6 +8,8 @@ a, .btn-link {
     color: #f2f2f2;
 }
 
+
+
 .btn-primary {
     color: #fff;
     background-color: #e89f0e;
@@ -154,8 +156,9 @@ app {
 }
 
 #card-image {
-    width: 35%;
-    height: 35%;
+    
+    max-height: 100%;
+    max-width: 100%;
 }
 
 :focus {
@@ -280,8 +283,17 @@ app {
     
 }
 
+.corona-card-over-t {
+
+    right: 8%;
+    text-align: right;
+    padding-top: 0;
+
+}
+
 .corona-card-name {
     filter: drop-shadow(1px 0px 1px gray);
+
 }
 
 .left {
@@ -373,8 +385,8 @@ app {
     }
 
     .main > div {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
+       /* padding-left: 2rem !important;
+        padding-right: 1.5rem !important;*/
     }
 
     .navbar-toggler {

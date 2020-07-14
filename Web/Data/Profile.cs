@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HereIAmAPI.Model
 {
-    public class Profile : IdentityUser<Guid>
+    public class Profile : IdentityUser
     {
         [Key]
         public int ID { get; set; }

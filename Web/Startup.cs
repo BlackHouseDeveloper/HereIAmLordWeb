@@ -17,7 +17,6 @@ using Web.Areas.Identity;
 using Web.Data;
 using Web.Shared;
 using Radzen;
-using HereIAmAPI.Model;
 
 namespace Web
 {
@@ -37,9 +36,8 @@ namespace Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentityCore<Profile>()
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();

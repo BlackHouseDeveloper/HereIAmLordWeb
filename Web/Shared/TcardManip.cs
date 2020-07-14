@@ -14,10 +14,10 @@ namespace Web.Shared
 
         private static readonly DateTime[] EventDates = new[]
         {
-            new DateTime(2010, 10, 1),
-            new DateTime(2010, 10, 2),
-            new DateTime(1995, 6, 1),
-            new DateTime(1994, 2, 1),
+            new DateTime(2020, 10, 1),
+            new DateTime(2020, 10, 2),
+            new DateTime(2020, 6, 1),
+            new DateTime(2020, 2, 1),
         };
 
         private static readonly string[] Names = new[]

@@ -2,19 +2,14 @@
 @if (card != null)
 {
     <Animation Effect="@cardanimation" Enabled="@active" Speed="Speed.Fast" Delay="Delay.None">
-
-        <div>
-    <h2 class="corona-card-name corona-card-over-t" style="color: white;">@card.EventDate</h2>
-</div>
-
         <div class="justify-content-center align-items-center d-flex">
             <img id="card-image" src="@card.Image" alt="@card.Name">
         </div>
     </Animation>
 
     <Animation Effect="@textanimation" Enabled="@active" Speed="Speed.Fast" Delay="Delay.None">
-        <div >
-            <h1 class="carousel-caption corona-card-overlay corona-card-name"  >@card.Name</h1>
+        <div class="carousel-caption corona-card-overlay">
+            <h1 class="corona-card-name">@card.Name</h1>
         </div>
     </Animation>
 }

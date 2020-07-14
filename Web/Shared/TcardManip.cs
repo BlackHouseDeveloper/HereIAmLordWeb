@@ -22,7 +22,7 @@ namespace Web.Shared
 
         private static readonly string[] Names = new[]
         {
-            "Kitchen Service", "Cleanup", "Community Service", "Choir Practice",
+            "Kitchen Service", "Cleanup", "Community Service", "Eating Ass",
         };
 
         private static readonly string[] Hashtagsx = new[]
@@ -30,11 +30,6 @@ namespace Web.Shared
              "BLM", "Cooking", "Service", "Art",
         };
 
-
-        private static readonly string[] Images = new[]
-        {
-            "./images/cards/cade-chapel1.jpeg","./images/cards/church-image.jpeg","./images/cards/cleanup.jpeg","./images/cards/community-service.jpg","./images/cards/kitchen-service.jpg"
-        };
         
 
          TCard Info1 = new TCard()
@@ -55,8 +50,7 @@ namespace Web.Shared
             {
                 EventDate = EventDates[rng.Next(EventDates.Length)],
                 Name = Names[rng.Next(Names.Length)],
-                Hashtags = Hashtagsx[rng.Next(Hashtagsx.Length)],
-                Image = Images[rng.Next(Images.Length)]
+                Hashtags = Hashtagsx[rng.Next(Hashtagsx.Length)]
 
 
             }).ToArray());

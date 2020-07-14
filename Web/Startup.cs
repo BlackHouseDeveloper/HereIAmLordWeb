@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Web.Areas.Identity;
 using Web.Data;
 using Web.Shared;
 using Radzen;
@@ -42,7 +42,7 @@ namespace Web
             
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<TcardManip>();
             services.AddScoped<DialogService>();
